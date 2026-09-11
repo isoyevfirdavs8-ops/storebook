@@ -30,7 +30,7 @@ DEBUG = env.bool('DEBUG', default=False)
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -49,12 +49,14 @@ INSTALLED_APPS = [
     'apps.orders',
     'django_filters',
     'rest_framework_simplejwt',
-    'drf_spectacular'
+    'drf_spectacular',
+    'corsheaders',
 
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -182,3 +184,9 @@ CELERY_TIMEZONE = 'Asia/Tashkent'
 
 TELEGRAM_BOT_TOKEN = env('TELEGRAM_BOT_TOKEN')
 TELEGRAM_ADMIN_CHAT_ID = env('TELEGRAM_ADMIN_CHAT_ID')
+
+
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+]

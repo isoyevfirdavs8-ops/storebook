@@ -14,6 +14,7 @@ from drf_spectacular.utils import extend_schema,extend_schema_view
 class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.filter(is_active=True).prefetch_related('authors', 'categories').select_related('publisher')
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    lookup_field = 'slug'
 
     filterset_fields = ['categories', 'authors', 'language', 'format']
     search_fields = ['title', 'isbn', 'authors__full_name']

@@ -15,19 +15,19 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class BookListSerializer(serializers.ModelSerializer):
-
     authors = serializers.StringRelatedField(many=True)
+    in_stock = serializers.ReadOnlyField()
+    current_price = serializers.ReadOnlyField()
 
     class Meta:
         model = Book
         fields = ['id', 'title', 'slug', 'authors', 'cover_image', 'price', 'discount_price', 'current_price', 'in_stock']
 
-
 class BookDetailSerializer(serializers.ModelSerializer):
-
     authors = AuthorSerializer(many=True, read_only=True)
     categories = CategorySerializer(many=True, read_only=True)
     publisher_name = serializers.CharField(source='publisher.name', read_only=True)
+    in_stock = serializers.ReadOnlyField()
 
     class Meta:
         model = Book

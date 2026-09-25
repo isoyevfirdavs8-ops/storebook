@@ -30,9 +30,19 @@ export default function Header() {
         </form>
 
         <div className="flex items-center gap-4 ml-auto">
-          <Link to="/cart" className="text-gray-700 hover:text-orange-600">
-            🛒 Savat
-          </Link>
+          <Link
+              to="/wishlist"
+              className="text-gray-700 hover:text-red-500"
+            >
+              ❤️ Kitoblarim
+            </Link>
+
+            <Link
+              to="/cart"
+              className="text-gray-700 hover:text-orange-600"
+            >
+              🛒 Savat
+            </Link>
 
           {isAuthenticated ? (
             <>

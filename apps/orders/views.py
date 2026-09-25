@@ -9,13 +9,7 @@ from .models import Cart, CartItem, Order, OrderItem
 from .serializers import CartSerializer, OrderSerializer
 from apps.books.models import Book
 from .tasks import send_order_notification
-
-
-
-
-
-
-
+from rest_framework import generics, status
 
 class CartView(APIView):
 
@@ -124,3 +118,17 @@ class MyOrdersView(generics.ListAPIView):
 
 
 
+class MyOrderDetailView(generics.RetrieveAPIView):
+    serializer_class = OrderSerializer
+    permission_classes = [IsAuthenticated]
+
+    @extend_schema(
+        tags=['Orders'],
+        summary="Buyurtma tafsilotlarini ko'rish"
+    )
+    def get_queryset(self):
+        return Order.objects.filter(
+            user=self.request.user
+        ).prefetch_related(
+            'items__book'
+        )

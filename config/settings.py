@@ -32,7 +32,6 @@ DEBUG = env.bool('DEBUG', default=False)
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -47,10 +46,13 @@ INSTALLED_APPS = [
     'apps.users',
     'apps.books',
     'apps.orders',
+    'apps.wishlist',
+
     'django_filters',
     'rest_framework_simplejwt',
     'drf_spectacular',
     'corsheaders',
+
 
 ]
 

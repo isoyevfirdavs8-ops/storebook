@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import Header from '../components/Header';
+
 import BookCard from '../components/BookCard';
 import { getBooks, getCategories } from '../services/books';
 
@@ -24,7 +24,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
+
 
       <div className="max-w-6xl mx-auto px-4 py-8 flex gap-8">
         <aside className="w-48 shrink-0">
